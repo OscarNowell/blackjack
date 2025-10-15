@@ -25,4 +25,14 @@ final class blackjackTests: XCTestCase {
         // tests that the blackjackGame has a deck of cards
         XCTAssertNotNil(blackjackGame.deckOfCards)
     }
+    
+    func test_blackjackGame_hasDealer() throws {
+        // tests that the blackjackGame starts with a dealer
+        XCTAssertNotNil(blackjackGame.dealer)
+    }
+    
+    func test_blackjackGame_hasPlayer() throws {
+        // tests that the blackjackGame starts with a player
+        XCTAssertNotNil(blackjackGame.player)
+    }
 }

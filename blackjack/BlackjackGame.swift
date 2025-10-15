@@ -9,6 +9,8 @@ import Foundation
 
 class BlackjackGame {
     var deckOfCards: Deck = Deck()
+    var dealer: String = "dealer"
+    var player: String = "player"
 }
 
 struct Deck {
