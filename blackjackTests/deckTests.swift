@@ -20,4 +20,8 @@ final class deckTests: XCTestCase {
     func test_deck_hasCards() throws {
         XCTAssertNotNil(deck.cards)
     }
+    
+    func test_deck_onInit_has52Cards() throws {
+        XCTAssertTrue(deck.cards.count == 52)
+    }
 }
