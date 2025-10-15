@@ -8,7 +8,7 @@
 import Foundation
 
 class BlackjackGame {
-    var deckOfCards: [Deck] = []
+    var deckOfCards: Deck = Deck()
 }
 
 struct Deck {
