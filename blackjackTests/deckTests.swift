@@ -24,4 +24,23 @@ final class deckTests: XCTestCase {
     func test_deck_onInit_has52Cards() throws {
         XCTAssertTrue(deck.cards.count == 52)
     }
+    
+    func test_deck_kingCardType_hasCorrectValue() throws {
+        let king = deck.cards.first(where: { $0.name == "king" })
+        
+        XCTAssertEqual(king?.values[0], 10)
+    }
+    
+    func test_deck_twoCardType_hasCorrectValue() throws {
+        let two = deck.cards.first(where: { $0.name == "two" })
+        
+        XCTAssertEqual(two?.values[0], 2)
+    }
+    
+    func test_deck_aceCardType_hasCorrectValues() throws {
+        let ace = deck.cards.first(where: { $0.name == "ace" })
+        
+        XCTAssertEqual(ace?.values[0], 1)
+        XCTAssertEqual(ace?.values[1], 11)
+    }
 }

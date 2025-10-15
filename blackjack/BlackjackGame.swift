@@ -31,7 +31,7 @@ struct Deck {
                 } else if (11...13).contains(i) {
                     newDeck.append(Card(suit: suit, name: names[i-1], values: [10]))
                 } else {
-                    newDeck.append(Card(suit: suit, name: names[i], values: [i]))
+                    newDeck.append(Card(suit: suit, name: names[i-1], values: [i]))
                 }
             }
         }
