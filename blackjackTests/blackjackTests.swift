@@ -92,17 +92,39 @@ final class blackjackTests: XCTestCase {
         XCTAssertTrue(blackjackGame.endOfGame)
     }
     
-    func test_blackjackGame_calculateHandValue_calculatesCorrectValue() throws {
-        blackjackGame.startNewGame()
+    func test_blackjackGame_calculateHandValue_returnsCorrectValue() throws {
+        blackjackGame.player.hand.append(Deck.Card(suit: "spades", name: "two", values: [2]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "hearts", name: "jack", values: [10]))
         
-        var expectedValue: Int = 0
-        
-        for card in blackjackGame.player.hand {
-            expectedValue += card.values[0]
-        }
+        let expectedValue: Int = 12
         
         let returnedValue = blackjackGame.calculateHandValue(for: blackjackGame.player.hand)
         
         XCTAssertEqual(expectedValue, returnedValue)
     }
+    
+    func test_blackjackGame_calculateHandValue_returnsCorrectValueWhenHandHasAce() throws {
+        blackjackGame.player.hand.append(Deck.Card(suit: "spades", name: "two", values: [2]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "hearts", name: "ace", values: [1, 11]))
+        
+        let expectedValue: Int = 13
+
+        let returnedValue = blackjackGame.calculateHandValue(for: blackjackGame.player.hand)
+        
+        XCTAssertEqual(expectedValue, returnedValue)
+    }
+    
+    func test_blackjackGame_calculateHandValue_returnsCorrectValueWhenHandHasAceAndOver21() throws {
+        blackjackGame.player.hand.append(Deck.Card(suit: "spades", name: "nine", values: [9]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "hearts", name: "ace", values: [1, 11]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "clubs", name: "king", values: [10]))
+        
+        let expectedValue: Int = 20
+
+        let returnedValue = blackjackGame.calculateHandValue(for: blackjackGame.player.hand)
+        
+        XCTAssertEqual(expectedValue, returnedValue)
+    }
+    
+    
 }

@@ -40,9 +40,24 @@ class BlackjackGame {
     
     func calculateHandValue(for hand: [Deck.Card]) -> Int {
         var value = 0
+        var aceCount = 0
         
         for card in hand {
-            value += card.values[0]
+            if card.name == "ace" {
+                value += card.values[1]
+                aceCount += 1
+            } else {
+                value += card.values[0]
+            }
+        }
+        
+        if value > 21 && aceCount > 0 {
+            for _ in 0...aceCount {
+                value -= 10
+                if value <= 21 {
+                    break
+                }
+            }
         }
         
         return value
