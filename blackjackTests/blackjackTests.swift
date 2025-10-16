@@ -126,5 +126,17 @@ final class blackjackTests: XCTestCase {
         XCTAssertEqual(expectedValue, returnedValue)
     }
     
+    func test_blackjackGame_calculateHandValue_returnsCorrectValueWhenHandHasTwoAcesAndOver21() throws {
+        blackjackGame.player.hand.append(Deck.Card(suit: "spades", name: "ace", values: [1, 11]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "hearts", name: "ace", values: [1, 11]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "clubs", name: "nine", values: [9]))
+        
+        let expectedValue: Int = 21
+
+        let returnedValue = blackjackGame.calculateHandValue(for: blackjackGame.player.hand)
+        
+        XCTAssertEqual(expectedValue, returnedValue)
+    }
+    
     
 }
