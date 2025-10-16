@@ -9,8 +9,18 @@ import Foundation
 
 class BlackjackGame {
     var deckOfCards: Deck = Deck()
-    var dealer: String = "dealer"
-    var player: String = "player"
+    var dealer: Player = Player(type: .computer)
+    var player: Player = Player(type: .human)
+}
+
+struct Player {
+    
+    let type: PlayerType
+    
+    enum PlayerType {
+        case human
+        case computer
+    }
 }
 
 struct Deck {
