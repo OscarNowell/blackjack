@@ -12,10 +12,20 @@ class BlackjackGame {
     var dealer: Player = Player(type: .computer)
     var player: Player = Player(type: .human)
     
+    var dealersTurn: Bool = false
+    
     func startNewGame() {
         for _ in 0...1 {
             player.hand.append(deckOfCards.deal())
             dealer.hand.append(deckOfCards.deal())
+        }
+    }
+    
+    func hit() {
+        if dealersTurn {
+            dealer.hand.append(deckOfCards.deal())
+        } else {
+            player.hand.append(deckOfCards.deal())
         }
     }
 }

@@ -63,4 +63,19 @@ final class blackjackTests: XCTestCase {
         XCTAssertTrue(blackjackGame.dealer.hand.count == 2)
         XCTAssertTrue(blackjackGame.player.hand.count == 2)
     }
+    
+    func test_blackjackGame_hit_correctlyDealsOneCardToPlayerWhenNotDealersTurn() throws {
+        blackjackGame.startNewGame()
+        blackjackGame.hit()
+        
+        XCTAssertTrue(blackjackGame.player.hand.count == 3)
+    }
+    
+    func test_blackjackGame_hit_correctlyDealsOneCardsToDealerWhenDealersTurn() throws {
+        blackjackGame.dealersTurn = true
+        blackjackGame.startNewGame()
+        blackjackGame.hit()
+        
+        XCTAssertTrue(blackjackGame.dealer.hand.count == 3)
+    }
 }

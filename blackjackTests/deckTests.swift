@@ -8,6 +8,7 @@
 import XCTest
 @testable import blackjack
 
+@MainActor
 final class deckTests: XCTestCase {
     
     var deck: Deck!
