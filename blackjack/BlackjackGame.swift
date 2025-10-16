@@ -37,6 +37,16 @@ class BlackjackGame {
             endOfGame = true
         }
     }
+    
+    func calculateHandValue(for hand: [Deck.Card]) -> Int {
+        var value = 0
+        
+        for card in hand {
+            value += card.values[0]
+        }
+        
+        return value
+    }
 }
 
 struct Player {

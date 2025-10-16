@@ -91,4 +91,18 @@ final class blackjackTests: XCTestCase {
         
         XCTAssertTrue(blackjackGame.endOfGame)
     }
+    
+    func test_blackjackGame_calculateHandValue_calculatesCorrectValue() throws {
+        blackjackGame.startNewGame()
+        
+        var expectedValue: Int = 0
+        
+        for card in blackjackGame.player.hand {
+            expectedValue += card.values[0]
+        }
+        
+        let returnedValue = blackjackGame.calculateHandValue(for: blackjackGame.player.hand)
+        
+        XCTAssertEqual(expectedValue, returnedValue)
+    }
 }
