@@ -52,7 +52,7 @@ class BlackjackGame {
         }
         
         if value > 21 && aceCount > 0 {
-            for _ in 0...aceCount {
+            for _ in 1...aceCount {
                 value -= 10
                 if value <= 21 {
                     break
