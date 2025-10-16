@@ -13,6 +13,7 @@ class BlackjackGame {
     var player: Player = Player(type: .human)
     
     var dealersTurn: Bool = false
+    var endOfGame: Bool = false
     
     func startNewGame() {
         for _ in 0...1 {
@@ -26,6 +27,14 @@ class BlackjackGame {
             dealer.hand.append(deckOfCards.deal())
         } else {
             player.hand.append(deckOfCards.deal())
+        }
+    }
+    
+    func stand() {
+        if !dealersTurn {
+            dealersTurn = true
+        } else {
+            endOfGame = true
         }
     }
 }

@@ -78,4 +78,17 @@ final class blackjackTests: XCTestCase {
         
         XCTAssertTrue(blackjackGame.dealer.hand.count == 3)
     }
+    
+    func test_blackjackGame_stand_changesToDealersTurnIfCalledByPlayer() throws {
+        blackjackGame.stand()
+        
+        XCTAssertTrue(blackjackGame.dealersTurn)
+    }
+    
+    func test_blackjackGame_stand_endsGameIfCalledByDealer() throws {
+        blackjackGame.dealersTurn = true
+        blackjackGame.stand()
+        
+        XCTAssertTrue(blackjackGame.endOfGame)
+    }
 }
