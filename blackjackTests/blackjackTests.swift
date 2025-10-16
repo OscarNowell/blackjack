@@ -151,5 +151,18 @@ final class blackjackTests: XCTestCase {
         XCTAssertEqual(expectedValue, returnedValue)
     }
     
+    func test_blackjackGame_calculateHandValue_returnsCorrectValueWhenHandHasFourAces() throws {
+        blackjackGame.player.hand.append(Deck.Card(suit: "spades", name: "ace", values: [1, 11]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "hearts", name: "ace", values: [1, 11]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "spades", name: "ace", values: [1, 11]))
+        blackjackGame.player.hand.append(Deck.Card(suit: "hearts", name: "ace", values: [1, 11]))
+        
+        let expectedValue: Int = 14
+
+        let returnedValue = blackjackGame.calculateHandValue(for: blackjackGame.player.hand)
+        
+        XCTAssertEqual(expectedValue, returnedValue)
+    }
+    
     
 }
