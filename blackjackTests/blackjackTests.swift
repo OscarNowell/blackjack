@@ -46,4 +46,14 @@ final class blackjackTests: XCTestCase {
         // tests that the initial player is of PlayerType.human
         XCTAssertEqual(blackjackGame.player.type, Player.PlayerType.human)
     }
+    
+    func test_blackjackGame_dealerHasHandOfCards() throws {
+        // tests that the dealer starts with a hand of cards
+        XCTAssertNotNil(blackjackGame.dealer.hand)
+    }
+    
+    func test_blackjackGame_playerHasHandOfCards() throws {
+        // tests that the player starts with a hand of cards
+        XCTAssertNotNil(blackjackGame.player.hand)
+    }
 }

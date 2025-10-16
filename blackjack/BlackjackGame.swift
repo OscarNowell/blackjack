@@ -16,6 +16,7 @@ class BlackjackGame {
 struct Player {
     
     let type: PlayerType
+    var hand: [Deck.Card] = []
     
     enum PlayerType {
         case human
