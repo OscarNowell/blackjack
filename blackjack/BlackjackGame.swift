@@ -11,6 +11,13 @@ class BlackjackGame {
     var deckOfCards: Deck = Deck()
     var dealer: Player = Player(type: .computer)
     var player: Player = Player(type: .human)
+    
+    func startNewGame() {
+        for _ in 0...1 {
+            player.hand.append(deckOfCards.deal())
+            dealer.hand.append(deckOfCards.deal())
+        }
+    }
 }
 
 struct Player {
@@ -25,10 +32,15 @@ struct Player {
 }
 
 struct Deck {
-    let cards: [Card]
+    
+    var cards: [Card]
     
     init() {
         cards = Deck.createFullDeck().shuffled()
+    }
+    
+    mutating func deal() -> Card {
+        return cards.popLast()!
     }
     
     private static func createFullDeck() -> [Card] {
@@ -52,7 +64,7 @@ struct Deck {
         return newDeck
     }
     
-    struct Card {
+    struct Card: Equatable {
         let suit: String
         let name: String
         let values: [Int]

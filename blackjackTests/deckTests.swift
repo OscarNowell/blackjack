@@ -43,4 +43,23 @@ final class deckTests: XCTestCase {
         XCTAssertEqual(ace?.values[0], 1)
         XCTAssertEqual(ace?.values[1], 11)
     }
+    
+    func test_deck_deal_correctlyDealsCard() throws {
+        let firstCard = deck.cards[deck.cards.count-1]
+        let secondCard = deck.cards[deck.cards.count-2]
+        
+        let firstDealtCard = deck.deal()
+        let secondDealtCard = deck.deal()
+        
+        XCTAssertEqual(firstCard, firstDealtCard)
+        XCTAssertEqual(secondCard, secondDealtCard)
+    }
+    
+    func test_deck_deal_deal7TimesRemoves7Cards() throws {
+        for _ in 1...7 {
+            deck.deal()
+        }
+        
+        XCTAssertTrue(deck.cards.count == 45)
+    }
 }

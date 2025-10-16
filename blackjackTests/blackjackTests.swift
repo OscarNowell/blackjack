@@ -56,4 +56,11 @@ final class blackjackTests: XCTestCase {
         // tests that the player starts with a hand of cards
         XCTAssertNotNil(blackjackGame.player.hand)
     }
+    
+    func test_blackjackGame_startNewGameDealsTwoCardsToEachPlayer() throws {
+        blackjackGame.startNewGame()
+        
+        XCTAssertTrue(blackjackGame.dealer.hand.count == 2)
+        XCTAssertTrue(blackjackGame.player.hand.count == 2)
+    }
 }
